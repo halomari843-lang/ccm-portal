@@ -1,0 +1,276 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>بوابة التواصل والتغيير والتطوع الصحي</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: a "pulse line" hero — one heartbeat line runs through three nodes (التواصل، التغيير، التطوع الصحي), the idea being one department, three beats.
+   Below, each department is a wide band with its own motif (signal waves / shape-morph / hands+plus), then the Drive folder tree. */
+:root{
+  --bg:#f2f6f5; --surface:#ffffff; --ink:#132d29; --muted:#56706a; --line:#d4e0dd;
+  --hero:#0c3a34; --hero-ink:#eef7f5; --hero-dim:#8fb8af;
+  --brand:#0f5f55;
+  --c1:#127ea3; --c1-soft:#e2f1f7;   /* التواصل: أزرق الإشارة */
+  --c2:#b5651d; --c2-soft:#f8ecdd;   /* التغيير: برتقالي التحوّل */
+  --c3:#2e8a45; --c3-soft:#e3f3e6;   /* التطوع الصحي: أخضر العطاء */
+  --pending:#a3392f;
+  --display:"Janna LT","Janna","IBM Plex Sans Arabic",Tahoma,sans-serif;
+  --body:"Janna LT","Janna","IBM Plex Sans Arabic",Tahoma,"Segoe UI",sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#0c1715; --surface:#13221f; --ink:#e2eeeb; --muted:#9bb4ae; --line:#24403a;
+  --hero:#081f1b; --hero-ink:#e8f4f1; --hero-dim:#7fa59c; --brand:#5fc2b2;
+  --c1:#62bfe0; --c1-soft:#12303b; --c2:#eaa860; --c2-soft:#34250f; --c3:#78d08c; --c3-soft:#15321e;
+  --pending:#f0897d; color-scheme:dark;}}
+:root[data-theme="dark"]{
+  --bg:#0c1715; --surface:#13221f; --ink:#e2eeeb; --muted:#9bb4ae; --line:#24403a;
+  --hero:#081f1b; --hero-ink:#e8f4f1; --hero-dim:#7fa59c; --brand:#5fc2b2;
+  --c1:#62bfe0; --c1-soft:#12303b; --c2:#eaa860; --c2-soft:#34250f; --c3:#78d08c; --c3-soft:#15321e;
+  --pending:#f0897d; color-scheme:dark;}
+
+*{box-sizing:border-box}
+html{direction:rtl}
+body{margin:0;direction:rtl;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:16px;line-height:1.75}
+.wrap{max-width:1140px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+a{color:inherit}
+:focus-visible{outline:3px solid var(--c1);outline-offset:3px;border-radius:8px}
+
+/* ---------- Hero ---------- */
+.hero{background:var(--hero);color:var(--hero-ink);position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background-image:linear-gradient(var(--hero-dim) 1px,transparent 1px),linear-gradient(90deg,var(--hero-dim) 1px,transparent 1px);
+  background-size:28px 28px;opacity:.07}
+.hero .wrap{position:relative;z-index:1;padding-block:22px 34px;display:flex;flex-direction:column;gap:22px}
+.topbar{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:10px;font-weight:700;font-size:.95rem}
+.brand-mark{width:34px;height:34px;flex:none}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav a{text-decoration:none;font-size:.85rem;padding:5px 12px;border-radius:999px;border:1px solid color-mix(in srgb,var(--hero-ink) 25%,transparent);display:flex;align-items:center;gap:6px}
+.nav a:hover{background:color-mix(in srgb,var(--hero-ink) 10%,transparent)}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--c)}
+
+.hero-copy{display:flex;flex-direction:column;gap:6px;max-width:760px}
+.kicker{color:var(--hero-dim);font-size:.9rem;letter-spacing:.02em}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(1.9rem,5vw,3.3rem);line-height:1.25;margin:0;text-wrap:balance}
+h1 .w{color:var(--c)}
+h1 .sep{color:var(--hero-dim);font-weight:400}
+.hero-copy p{margin:0;color:var(--hero-dim);max-width:60ch}
+
+.pulse{width:100%;height:auto;display:block;max-width:100%}
+.pulse .track{fill:none;stroke:var(--hero-ink);stroke-width:3;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.pulse .node circle.core{fill:var(--hero)}
+.pulse .node circle.ring{fill:none;stroke:var(--c);stroke-width:4}
+.pulse .node circle.halo{fill:var(--c);opacity:.14}
+.pulse .node .ic{stroke:var(--c);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.pulse .node text{fill:var(--hero-ink);font-family:var(--display);font-weight:700;font-size:26px;text-anchor:middle}
+.pulse a:hover circle.halo,.pulse a:focus circle.halo{opacity:.3}
+@media (prefers-reduced-motion:no-preference){
+  .pulse .track{stroke-dasharray:1400;stroke-dashoffset:0;animation:draw 2.4s ease-out both}
+  .pulse .node circle.halo{transform-box:fill-box;transform-origin:center;animation:beat 2.4s ease-in-out infinite}
+  .pulse .n2 circle.halo{animation-delay:.8s}.pulse .n3 circle.halo{animation-delay:1.6s}
+  @keyframes draw{from{stroke-dashoffset:1400}to{stroke-dashoffset:0}}
+  @keyframes beat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}}
+}
+
+/* ---------- Departments ---------- */
+main .wrap{padding-block:40px 56px;display:flex;flex-direction:column;gap:28px}
+.dept{background:var(--surface);border:1px solid var(--line);border-radius:18px;overflow:hidden;
+  display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);scroll-margin-top:16px}
+.dept-art{background:var(--soft);position:relative;padding:28px 26px;display:flex;flex-direction:column;justify-content:space-between;gap:24px;min-height:250px;overflow:hidden}
+.dept-art svg.motif{position:absolute;top:0;bottom:0;left:0;width:64%;height:100%;color:var(--c);opacity:.9}
+.dept-art > *:not(svg){position:relative}
+.num{font-family:var(--display);font-size:.85rem;color:var(--c);font-weight:700;letter-spacing:.04em}
+.dept h2{font-family:var(--display);font-weight:700;font-size:clamp(1.8rem,3.6vw,2.5rem);line-height:1.2;margin:4px 0 0;color:var(--c)}
+.motto{font-size:1rem;color:var(--ink);font-weight:600;max-width:24ch}
+.dept-body{padding:26px;display:flex;flex-direction:column;gap:16px;min-width:0}
+.dept-body > p{margin:0;color:var(--muted)}
+@media (max-width:820px){.dept{grid-template-columns:1fr}.dept-art{min-height:200px}}
+
+.main-link{display:flex;align-items:center;gap:12px;text-decoration:none;background:var(--c);color:var(--surface);border-radius:12px;padding:13px 16px;font-weight:700}
+.main-link:hover{filter:brightness(1.08)}
+.main-link .lbl{flex:1}
+.main-link.is-pending{background:transparent;color:var(--muted);border:1.5px dashed var(--line);font-weight:600}
+
+.subs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+@media (max-width:560px){.subs{grid-template-columns:1fr}}
+.sub{display:flex;flex-direction:column;gap:8px;padding:14px;border:1px solid var(--line);border-radius:12px;text-decoration:none;min-width:0}
+a.sub:hover{border-color:var(--c);background:var(--soft)}
+.sub .ico{width:38px;height:38px;border-radius:10px;background:var(--soft);color:var(--c);display:grid;place-items:center}
+.sub .name{font-weight:700;font-size:1.05rem}
+.sub .hint{font-size:.82rem;color:var(--muted);line-height:1.5}
+.sub .state{font-size:.78rem;font-weight:700;color:var(--c);margin-top:auto}
+.sub.is-pending .state{color:var(--pending)}
+.is-pending{cursor:not-allowed}
+@media (max-width:560px){.sub{flex-direction:row;align-items:center}.sub .txt{flex:1}.sub .state{margin-top:0}}
+
+/* ---------- Guide ---------- */
+.guide{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:28px 26px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:30px}
+@media (max-width:760px){.guide{grid-template-columns:1fr}}
+.guide h2{font-family:var(--display);font-size:1.35rem;margin:0 0 8px;color:var(--ink)}
+.guide p{margin:0 0 12px;color:var(--muted)}
+.guide ol{margin:0;padding-inline-start:1.3em;display:flex;flex-direction:column;gap:8px}
+.tree{list-style:none;margin:0;padding:16px 18px;background:var(--bg);border:1px solid var(--line);border-radius:12px;display:flex;flex-direction:column;gap:6px}
+.tree .root{font-weight:700}
+.tree ul{list-style:none;margin:4px 0 0;padding:0 18px 0 0;border-right:2px solid var(--line);display:flex;flex-direction:column;gap:4px}
+.tree .branch{font-weight:700;color:var(--c)}
+.tree .leaf{color:var(--muted);font-size:.92rem;display:flex;gap:6px;flex-wrap:wrap}
+.tree .leaf span{background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:0 8px}
+
+footer{border-top:1px solid var(--line)}
+footer .wrap{padding-block:18px;color:var(--muted);font-size:.85rem}
+@media (prefers-reduced-motion:no-preference){.main-link,a.sub,.nav a{transition:background .15s,border-color .15s,filter .15s}}
+</style>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="topbar">
+      <div class="brand">
+        <svg class="brand-mark" viewBox="0 0 40 40" aria-hidden="true">
+          <circle cx="20" cy="20" r="18" fill="none" stroke="currentColor" stroke-width="2" opacity=".35"/>
+          <path d="M4 21h8l3-7 5 14 4-10 2 3h10" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>إدارة التواصل والتغيير والتطوع الصحي</span>
+      </div>
+      <nav class="nav" aria-label="الأقسام">
+        <a href="#communication" style="--c:var(--c1)"><span class="dot"></span>التواصل</a>
+        <a href="#change" style="--c:var(--c2)"><span class="dot"></span>التغيير</a>
+        <a href="#volunteering" style="--c:var(--c3)"><span class="dot"></span>التطوع الصحي</a>
+      </nav>
+    </div>
+
+    <div class="hero-copy">
+      <span class="kicker">نبض واحد، ثلاثة أقسام</span>
+      <h1><span class="w" style="--c:var(--c1)">نتواصل</span> <span class="sep">·</span> <span class="w" style="--c:var(--c2)">نتغيّر</span> <span class="sep">·</span> <span class="w" style="--c:var(--c3)">نتطوّع</span></h1>
+      <p>بوابة الإدارة إلى ملفاتها. اختر القسم، ثم افتح السياسات أو الجداول أو الوصوف الوظيفية مباشرة على Google Drive.</p>
+    </div>
+
+    <svg class="pulse" viewBox="0 0 900 230" role="img" aria-label="خط نبض يمر بالأقسام الثلاثة: التواصل ثم التغيير ثم التطوع الصحي">
+      <path class="track" d="M890 100 H776 M664 100 H612 L596 62 L578 152 L558 30 L542 126 L530 100 H506 M394 100 H342 L326 62 L308 152 L288 30 L272 126 L260 100 H236 M124 100 H10"/>
+      <a href="#communication" class="node n1" style="--c:var(--c1)">
+        <circle class="halo" cx="720" cy="100" r="66"/><circle class="core" cx="720" cy="100" r="54"/><circle class="ring" cx="720" cy="100" r="54"/>
+        <g class="ic" transform="translate(694 74) scale(2.17)"><path d="M4 5h16v10H10l-5 4v-4H4z"/><path d="M8 9h8M8 12h5"/></g>
+        <text x="720" y="200">التواصل</text>
+      </a>
+      <a href="#change" class="node n2" style="--c:var(--c2)">
+        <circle class="halo" cx="450" cy="100" r="66"/><circle class="core" cx="450" cy="100" r="54"/><circle class="ring" cx="450" cy="100" r="54"/>
+        <g class="ic" transform="translate(424 74) scale(2.17)"><path d="M19 12a7 7 0 0 1-12.2 4.7"/><path d="M5 12a7 7 0 0 1 12.2-4.7"/><path d="M17.5 3.5v4h-4M6.5 20.5v-4h4"/></g>
+        <text x="450" y="200">التغيير</text>
+      </a>
+      <a href="#volunteering" class="node n3" style="--c:var(--c3)">
+        <circle class="halo" cx="180" cy="100" r="66"/><circle class="core" cx="180" cy="100" r="54"/><circle class="ring" cx="180" cy="100" r="54"/>
+        <g class="ic" transform="translate(154 74) scale(2.17)"><path d="M12 20s-7-4.4-7-9.6A3.9 3.9 0 0 1 12 8a3.9 3.9 0 0 1 7 2.4C19 15.6 12 20 12 20z"/><path d="M12 10.5v5M9.5 13h5"/></g>
+        <text x="180" y="200">التطوع الصحي</text>
+      </a>
+    </svg>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div id="depts" style="display:flex;flex-direction:column;gap:28px"></div>
+
+    <section class="guide" aria-labelledby="g-title">
+      <div>
+        <h2 id="g-title">هيكل المجلدات على Drive</h2>
+        <p>مجلد رئيسي للإدارة، وداخله مجلد لكل قسم، وفي كل قسم ثلاثة مجلدات بنفس الأسماء.</p>
+        <div class="tree">
+          <div class="root">📁 إدارة التواصل والتغيير والتطوع الصحي</div>
+          <ul>
+            <li style="--c:var(--c1)"><div class="branch">التواصل</div><div class="leaf"><span>السياسات</span><span>الجداول</span><span>الوصوف</span></div></li>
+            <li style="--c:var(--c2)"><div class="branch">التغيير</div><div class="leaf"><span>السياسات</span><span>الجداول</span><span>الوصوف</span></div></li>
+            <li style="--c:var(--c3)"><div class="branch">التطوع الصحي</div><div class="leaf"><span>السياسات</span><span>الجداول</span><span>الوصوف</span></div></li>
+          </ul>
+        </div>
+      </div>
+      <div>
+        <h2>طريقة ربط المجلدات بالموقع</h2>
+        <ol>
+          <li>أنشئ المجلدات في Google Drive بالترتيب الموضح.</li>
+          <li>افتح كل مجلد، واضغط «مشاركة» ثم اختر «أي شخص لديه الرابط» أو موظفي الجهة فقط.</li>
+          <li>اضغط «نسخ الرابط» لكل مجلد (12 رابطًا: 3 رئيسية و9 فرعية).</li>
+          <li>أرسل الروابط، وتُضاف إلى الموقع فيعمل كل زر مباشرة.</li>
+        </ol>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer><div class="wrap">إدارة التواصل والتغيير والتطوع الصحي · الأزرار المعلّمة «بانتظار الرابط» تعمل بمجرد إضافة رابط المجلد.</div></footer>
+
+<script>
+document.documentElement.lang="ar";document.documentElement.dir="rtl";
+/* ===== روابط Google Drive =====
+   ضع رابط كل مجلد بين علامتي التنصيص. الرابط الفارغ يظهر كزر «بانتظار الرابط». */
+const DRIVE = {
+  communication: { main:"https://drive.google.com/drive/folders/17AdsYfuRppRD22hp5j1eNyJWtJNU1t13", policies:"https://drive.google.com/drive/folders/1sFIlg-eZcOuQxzQwTkAm8igQw2pagC4F", tables:"https://drive.google.com/drive/folders/1HghI6D2Pe4KIV3ou7dXkOof1oKUHgru9", descriptions:"https://drive.google.com/drive/folders/1QGhf55SaUhykOt8VvyrCgEa1RSTVI5zH" },
+  change:        { main:"https://drive.google.com/drive/folders/1lOaVtGstxRqJH4BEnR-hiWlxAlsqOfg2", policies:"https://drive.google.com/drive/folders/1CG7VKhF15YEvbztGPYD0OTSjWKs2FG_j", tables:"https://drive.google.com/drive/folders/1c49K5avqgq3tSX2qohm_PHTHAa8hTYCO", descriptions:"https://drive.google.com/drive/folders/1-UrYabNy4GQHF7ZwAZA4ufzGHkU4LtXV" },
+  volunteering:  { main:"https://drive.google.com/drive/folders/1pP_F_Mgi8jEp1--ikZVAn88V9ibAcTf8", policies:"https://drive.google.com/drive/folders/1OeyDnUqgoqgxhCxOXTUqWjuceLNaaD3a", tables:"https://drive.google.com/drive/folders/1qRnm9akFdJ0IYMS7zJ272LUCCfk6BFI8", descriptions:"https://drive.google.com/drive/folders/1w2lVHsJLFaeHrYyJhOqShN6xDiGkK8jv" }
+};
+
+/* زخرفة كل قسم: موجات إشارة للتواصل، شكل يتحوّل من مربع إلى دائرة للتغيير، علامات صحية وقلب للتطوع */
+const MOTIFS = {
+  communication: `<svg class="motif" viewBox="0 0 400 260" preserveAspectRatio="xMinYMax slice" aria-hidden="true" fill="none" stroke="currentColor">
+      ${[40,80,120,160,200,240].map((r,i)=>`<circle cx="40" cy="250" r="${r}" stroke-width="${2.2-i*.25}" opacity="${.5-i*.07}"/>`).join("")}
+      <circle cx="40" cy="250" r="10" fill="currentColor" stroke="none" opacity=".6"/></svg>`,
+  change: `<svg class="motif" viewBox="0 0 400 260" preserveAspectRatio="xMinYMax slice" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2">
+      ${[0,1,2,3,4].map(i=>{const s=46, x=28+i*62, y=196, r=i*5.75;return `<rect x="${x}" y="${y-s/2}" width="${s}" height="${s}" rx="${r}" opacity="${.22+i*.1}"/>`}).join("")}
+      <path d="M40 160 C120 120 220 120 330 150" stroke-dasharray="4 7" opacity=".45"/><path d="M322 140l10 10-13 4" opacity=".45"/></svg>`,
+  volunteering: `<svg class="motif" viewBox="0 0 400 260" preserveAspectRatio="xMinYMax slice" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+      ${Array.from({length:18},(_,k)=>{const c=k%6,r=Math.floor(k/6),x=30+c*44,y=160+r*36;return (c===2&&r===1)?"":`<path d="M${x} ${y-7}v14M${x-7} ${y}h14" opacity=".32"/>`}).join("")}
+      <path d="M118 210s-22-14-22-30a12 12 0 0 1 22-7a12 12 0 0 1 22 7c0 16-22 30-22 30z" fill="currentColor" stroke="none" opacity=".55"/></svg>`
+};
+
+const DEPTS = [
+  { key:"communication", name:"التواصل", num:"القسم الأول", c:"var(--c1)", soft:"var(--c1-soft)",
+    motto:"رسالة واضحة تصل إلى الجميع",
+    about:"التواصل المؤسسي الداخلي والخارجي، والرسائل التوعوية، والعلاقات مع الجهات." },
+  { key:"change", name:"التغيير", num:"القسم الثاني", c:"var(--c2)", soft:"var(--c2-soft)",
+    motto:"خطوة بخطوة نحو التحوّل",
+    about:"إدارة مبادرات التغيير، وخطط التهيئة، وقياس جاهزية الفرق للتحول." },
+  { key:"volunteering", name:"التطوع الصحي", num:"القسم الثالث", c:"var(--c3)", soft:"var(--c3-soft)",
+    motto:"عطاء يصنع أثرًا في صحة المجتمع",
+    about:"استقطاب المتطوعين وتأهيلهم، وتنظيم الفرص التطوعية الصحية ومتابعتها." }
+];
+
+const SUBS = [
+  { key:"policies", name:"السياسات", hint:"السياسات والإجراءات المعتمدة",
+    icon:'<path d="M7 3h7l5 5v13H7z"/><path d="M14 3v5h5M10 13h6M10 17h6"/>' },
+  { key:"tables", name:"الجداول", hint:"الجداول والخطط الزمنية",
+    icon:'<rect x="4" y="4" width="16" height="16" rx="2"/><path d="M4 10h16M10 4v16"/>' },
+  { key:"descriptions", name:"الوصوف", hint:"الوصوف الوظيفية والمهام",
+    icon:'<circle cx="12" cy="8" r="3.5"/><path d="M5 20c1-4 4-6 7-6s6 2 7 6"/>' }
+];
+
+const svg = (inner, s=20) => `<svg width="${s}" height="${s}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${inner}</svg>`;
+const arrow = svg('<path d="M15 6l-6 6 6 6"/>', 16);
+const folder = svg('<path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>');
+const ok = u => /^https:\/\//.test(u||"");
+
+document.getElementById("depts").innerHTML = DEPTS.map(d => {
+  const L = DRIVE[d.key];
+  const main = ok(L.main)
+    ? `<a class="main-link" href="${L.main}" target="_blank" rel="noopener">${folder}<span class="lbl">فتح مجلد ${d.name} على Drive</span>${arrow}</a>`
+    : `<span class="main-link is-pending" aria-disabled="true">${folder}<span class="lbl">مجلد ${d.name}</span><span style="color:var(--pending);font-size:.8rem">بانتظار الرابط</span></span>`;
+  const subs = SUBS.map(s => {
+    const inner = `<span class="ico">${svg(s.icon)}</span><span class="txt"><span class="name">${s.name}</span><br><span class="hint">${s.hint}</span></span>`;
+    return ok(L[s.key])
+      ? `<a class="sub" href="${L[s.key]}" target="_blank" rel="noopener">${inner}<span class="state">فتح ←</span></a>`
+      : `<span class="sub is-pending" aria-disabled="true">${inner}<span class="state">بانتظار الرابط</span></span>`;
+  }).join("");
+  return `<section class="dept" id="${d.key}" style="--c:${d.c};--soft:${d.soft}" aria-labelledby="h-${d.key}">
+    <div class="dept-art">${MOTIFS[d.key]}
+      <div><span class="num">${d.num}</span><h2 id="h-${d.key}">${d.name}</h2></div>
+      <div class="motto">${d.motto}</div>
+    </div>
+    <div class="dept-body"><p>${d.about}</p>${main}<div class="subs">${subs}</div></div>
+  </section>`;
+}).join("");
+</script>
+
+</html>
